@@ -20,7 +20,7 @@ public class TransactionFactory {
 
 	public Transaction create(DateMidnight date, String description, BigDecimal debit, BigDecimal credit, String account) {
 		Transaction transaction = new Transaction(new DateTime(date), account, description, categorize(description), (debit == null ? credit : debit.negate()));
-		return repository.create(transaction);
+		return repository.save(transaction);
 	}
 
 	String categorize(String description) {
